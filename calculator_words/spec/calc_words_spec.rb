@@ -1,9 +1,20 @@
 require('rspec')
 require('calc_words')
 
-describe('calc_words') d
-  it(' s') do
-    calc_words(1).should(eq("I"))
+describe('calc_words') do
+  it('should add 5 plus 3') do
+    calc_words("what is 5 plus 3?").should(eq(8))
   end
-
+  it("should subtract 3 from 5") do
+    calc_words("what is 5 minus 3?").should(eq(2))
+  end
+  it("should multiply 5 by 3") do
+    calc_words("what is 5 times 3").should(eq(15))
+ end
+  it("should divide 10 by 2") do
+    calc_words("what is 10 divided by 2?").should(eq(5))
+  end
+  it("should return 5 to the 2nd power") do
+    calc_words("what is 5 to the 2nd power").should(eq(10))
+  end
 end
