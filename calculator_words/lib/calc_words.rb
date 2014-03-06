@@ -1,25 +1,29 @@
 def calc_words(sentence) 
 sentence_array = sentence.split(" ")
 
-  if sentence_array.include? "plus"
-    results = sentence_array[2].to_i + sentence_array[4].to_i
-  elsif sentence_array.include? "minus" 
-    results = sentence_array[2].to_i - sentence_array[4].to_i
-  elsif sentence_array.include? "times"
-    results = sentence_array[2].to_i * sentence_array[4].to_i
-  elsif sentence_array.include? "divided"
-    results = sentence_array[2].to_f / sentence_array[5].to_f
-  elsif sentence_array.include? "power?"
-    results = sentence_array[2].to_f ** sentence_array[5].to_f
+numbers = []
+
+operators = { 
+"plus" => "+",
+"minus" => "-",
+"times" => "*",
+"divided" => "/",
+"power" => "**"
+}
+
+  sentence_array.each do |x|
+    is_number = x.to_f
+      if is_number > 0
+        numbers << is_number
+      elsif !operators[x].nil?
+      numbers << operators[x]
+     end
   end
-  puts results
-end
+ 
+  
+  numbers_string = numbers.join(" ")
+  eval(numbers_string)
+end  
+# calc_words("what is 5 to the power of 2?")
 
-calc_words("what is 5 to the 2nd power?")
-
-# does string include "plus"
-# what is index position of "plus"
-# take index position of "plus" - 1
-# add "plus" - 1 to "plus" + 1
-
-
+# what is 2 plus 5 to the 2nd power divided by 4 plus 2
